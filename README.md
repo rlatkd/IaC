@@ -2,7 +2,7 @@
 
 ## 1. 새 EC2 인스턴스의 퍼블릭 주소 접근
 
-<img src="https://github.com/rlatkd/Terraform/blob/main/assets/disconnect.jpg">
+<img src="https://github.com/rlatkd/IaC/blob/main/assets/disconnect.jpg">
 
 ### 인바운드 8080 port를 허용하는 보안 그룹을 추가
 
@@ -44,7 +44,7 @@ resource "aws_security_group" "webserversg" {
 
 ## 2. 그래도 접속이 안됨
 
-<img src="https://github.com/rlatkd/Terraform/blob/main/assets/disconnect.jpg">
+<img src="https://github.com/rlatkd/IaC/blob/main/assets/disconnect.jpg">
 
 ```
 user_data              = <<-EOF
