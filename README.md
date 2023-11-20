@@ -1,10 +1,12 @@
 # Trouble Shooting 및 개선점
 
-## 1. 새 EC2 인스턴스의 퍼블릭 주소 접근
+## 1. Trouble Shooting
+
+### 새 EC2 인스턴스의 퍼블릭 주소 접근
 
 <img src="https://github.com/rlatkd/IaC/blob/main/assets/disconnect.jpg">
 
-### 인바운드 8080 port를 허용하는 보안 그룹을 추가
+#### 인바운드 8080 port를 허용하는 보안 그룹을 추가
 
 ```
 provider "aws" {
@@ -42,7 +44,7 @@ resource "aws_security_group" "webserversg" {
 ################
 ```
 
-## 2. 그래도 접속이 안됨
+### 그래도 접속이 안됨
 
 <img src="https://github.com/rlatkd/IaC/blob/main/assets/disconnect.jpg">
 
@@ -60,7 +62,7 @@ user_data              = <<-EOF
 
 - 이 부분의 `nohup`이 Amazon Linux 에서 다이렉트로 사용되려면 key를 통해 인증하거나 머신 내부에서 다운로드 받아야함
 
-### AMI Image를 Ubuntu로 교체
+#### AMI Image를 Ubuntu로 교체
 
 ```
 provider "aws" {
@@ -106,11 +108,13 @@ variable "service_port" {
 }
 ```
 
-### 연결이 정상적으로 되는 것을 확인
+#### 연결이 정상적으로 되는 것을 확인
 
 <img src="https://github.com/rlatkd/IaC/blob/main/assets/connected.jpg">
 
-## 3. 환경변수를 이용하여 ip와 포트를 하드코딩하지 않고 자동으로 연동되게 설정
+## 2. 개선점
+
+### 환경변수를 이용하여 ip와 포트를 하드코딩하지 않고 자동으로 연동되게 설정
 
 ```
 ...
@@ -142,7 +146,7 @@ default = 8080
 ...
 ```
 
-## 4. outputs를 이용해 terraform apply 후 자동으로 `IPAddr:PORT` 를 print하게 설정
+### outputs를 이용해 terraform apply 후 자동으로 `IPAddr:PORT` 를 print하게 설정
 
 ```
 ...
@@ -160,6 +164,6 @@ description = "Web Server Service URL"
 ...
 ```
 
-### terraform apply 실행 후 terminal 출력물
+#### terraform apply 실행 후 terminal 출력물
 
 <img src="https://github.com/rlatkd/IaC/blob/main/assets/outputs.jpg">
