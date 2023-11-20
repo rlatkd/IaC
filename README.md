@@ -47,11 +47,15 @@ resource "aws_security_group" "webserversg" {
 <img src="https://github.com/rlatkd/IaC/blob/main/assets/disconnect.jpg">
 
 ```
+...
+...
 user_data              = <<-EOF
     #!/bin/bash
     echo "Hello, World" > index.html
     nohup busybox httpd -f -p 8080 &
   EOF
+...
+...
 ```
 
 - 이 부분의 `nohup`이 Amazon Linux 에서 다이렉트로 사용되려면 key를 통해 인증하거나 머신 내부에서 다운로드 받아야함
