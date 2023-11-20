@@ -160,6 +160,6 @@ description = "Web Server Service URL"
 ...
 ```
 
-### terraform apply
+### terraform apply 실행 후 terminal 출력물
 
 <img src="https://github.com/rlatkd/IaC/blob/main/assets/outputs.jpg">
