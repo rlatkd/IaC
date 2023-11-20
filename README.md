@@ -1,4 +1,4 @@
-# 빌드 및 배포 Trouble Shooting
+# Trouble Shooting 및 개선점
 
 ## 1. 새 EC2 인스턴스의 퍼블릭 주소 접근
 
@@ -105,3 +105,61 @@ variable "service_port" {
   default     = 8080
 }
 ```
+
+### 연결이 정상적으로 되는 것을 확인
+
+<img src="https://github.com/rlatkd/IaC/blob/main/assets/connected.jpg">
+
+## 3. 환경변수를 이용하여 ip와 포트를 하드코딩하지 않고 자동으로 연동되게 설정
+
+```
+...
+...
+  user_data              = <<-EOF
+    #!/bin/bash
+    echo "Hello, World" > index.html
+    nohup busybox httpd -f -p ${var.service_port} &
+  EOF
+...
+...
+resource "aws_security_group" "webserversg" {
+  name = "terraform-example-webserversg"
+
+  ingress {
+    from_port   = var.service_port
+    to_port     = var.service_port
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+}
+
+variable "service_port" {
+description = "Service Port for HTTP Request"
+type = number
+default = 8080
+}
+...
+...
+```
+
+## 4. outputs를 이용해 terraform apply 후 자동으로 `IPAddr:PORT` 를 print하게 설정
+
+```
+...
+...
+output "public_ip" {
+value = aws_instance.example.public_ip
+description = "Public IP for Web Server"
+}
+
+output "service_url" {
+value = "http://${aws_instance.example.public_ip}:${var.service_port}"
+description = "Web Server Service URL"
+}
+...
+...
+```
+
+### terraform apply
+
+<img src="https://github.com/rlatkd/IaC/blob/main/assets/outputs.jpg">
