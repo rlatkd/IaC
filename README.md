@@ -64,9 +64,11 @@ provider "aws" {
 }
 
 resource "aws_instance" "example" {
+
 # 이 부분 수정 #
   ami                    = "ami-086cae3329a3f7d75"
 ###############
+
   instance_type          = "t2.micro"
   vpc_security_group_ids = [aws_security_group.webserversg.id]
   user_data              = <<-EOF
