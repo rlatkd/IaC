@@ -1,4 +1,4 @@
-# Trouble Shooting 및 개선점1
+# Trouble Shooting 및 개선점
 
 ## 1. Trouble Shooting
 
