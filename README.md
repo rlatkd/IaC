@@ -4,7 +4,7 @@
 
 ### 새 EC2 인스턴스의 퍼블릭 주소 접근
 
-<img src="https://github.com/rlatkd/IaC/blob/main/assets/disconnect.jpg">
+<img src="https://github.com/rlatkd/terraform/blob/main/assets/disconnect.jpg">
 
 #### 인바운드 8080 port를 허용하는 보안 그룹을 추가
 
@@ -46,7 +46,7 @@ resource "aws_security_group" "webserversg" {
 
 ### 그래도 접속이 안됨
 
-<img src="https://github.com/rlatkd/IaC/blob/main/assets/disconnect.jpg">
+<img src="https://github.com/rlatkd/terraform/blob/main/assets/disconnect.jpg">
 
 ```
 ...
@@ -110,7 +110,7 @@ variable "service_port" {
 
 #### 연결이 정상적으로 되는 것을 확인
 
-<img src="https://github.com/rlatkd/IaC/blob/main/assets/connected.jpg">
+<img src="https://github.com/rlatkd/terraform/blob/main/assets/connected.jpg">
 
 ## 2. 개선점
 
@@ -166,4 +166,4 @@ description = "Web Server Service URL"
 
 #### terraform apply 실행 후 terminal 출력물
 
-<img src="https://github.com/rlatkd/IaC/blob/main/assets/outputs.jpg">
+<img src="https://github.com/rlatkd/terraform/blob/main/assets/outputs.jpg">
